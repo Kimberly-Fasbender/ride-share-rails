@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_04_15_231202) do
 
   # These are extensions that must be enabled in order to support this database
@@ -21,13 +22,15 @@ ActiveRecord::Schema.define(version: 2019_04_15_231202) do
   end
   
 ActiveRecord::Schema.define(version: 2019_04_15_225447) do
+=======
+ActiveRecord::Schema.define(version: 2019_04_15_232158) do
+>>>>>>> e70f711983b50e2c887d7b7f8e19fcc32ec402fd
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
-    t.integer "vin"
     t.string "car_make"
     t.string "car_model"
     t.datetime "created_at", null: false
