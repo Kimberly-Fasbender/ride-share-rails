@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_04_15_231202) do
-  
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  
+
   create_table "passengers", force: :cascade do |t|
     t.string "name"
     t.bigint "phone_num"
   end
   
-=======
 ActiveRecord::Schema.define(version: 2019_04_15_225447) do
 
   # These are extensions that must be enabled in order to support this database
@@ -36,5 +34,4 @@ ActiveRecord::Schema.define(version: 2019_04_15_225447) do
     t.datetime "updated_at", null: false
   end
 
->>>>>>> 678f6532ddebdb99230d55e4964734724883d3aa
 end
