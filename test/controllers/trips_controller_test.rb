@@ -1,8 +1,14 @@
 require "test_helper"
 
 describe TripsController do
+  describe "index" do
+    it "should go to index page" do
+      get trips_path
+      must_respond_with :success
+    end
+  end
+
   describe "show" do
-    # Your tests go here
   end
 
   describe "edit" do
