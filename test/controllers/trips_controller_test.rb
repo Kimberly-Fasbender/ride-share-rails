@@ -34,7 +34,19 @@ describe TripsController do
   end
 
   describe "edit" do
-    # Your tests go here
+    it "can get the edit page" do
+      get edit_trip_path(trip.id)
+
+      must_respond_with :success
+    end
+
+    it "will respond with a 404 for an invalid id" do
+      invalid_id = -5
+
+      get edit_trip_path(invalid_id)
+
+      must_respond_with :not_found
+    end
   end
 
   describe "update" do
