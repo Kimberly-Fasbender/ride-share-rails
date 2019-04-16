@@ -4,9 +4,9 @@ class TripsController < ApplicationController
   end
 
   def show
-    id  = params[:id]
+    id = params[:id]
     @trip = Trip.find_by(id: id)
-    unless @trip 
+    unless @trip
       head :not_found
     end
   end
@@ -21,6 +21,11 @@ class TripsController < ApplicationController
   end
 
   def edit
+    id = params[:id]
+    @trip = Trip.find_by(id: id)
+    unless @trip
+      head :not_found
+    end
   end
 
   def destroy
