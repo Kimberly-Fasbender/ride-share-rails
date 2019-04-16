@@ -98,7 +98,25 @@ describe DriversController do
   end
 
   describe "create" do
-    # Your tests go here
+    it "can create a new task" do
+      driver_hash = {
+        driver: {
+          name: "Cecilia",
+          vin: "E38497CS983X",
+        },
+      }
+
+      # Act-Assert
+      expect {
+        post drivers_path, params: driver_hash
+      }.must_change "Driver.count", 1
+
+      new_driver = Driver.find_by(driver: driver_hash[:driver][:name])
+      expect(new_driver.vin.must_equal driver_hash[:driver][:vin])
+
+      must_respond_with :redirect
+      must_redirect_to driver_path(new_driver.id)
+    end
   end
 
   describe "destroy" do
