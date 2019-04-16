@@ -1,10 +1,6 @@
-<h1>Editing <%= @driver.name %> </h1>
+<h1>Edit <%= @driver.name %> </h1>
 
-<%= form_with model: @driver do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :vin %>
-  <%= f.text_field :vin %>
-  <%= f.submit "Update" %>
-<% end %>
+<%= render partial: "form", locals: { 
+  action_name: "Update",
+  } %>
 
