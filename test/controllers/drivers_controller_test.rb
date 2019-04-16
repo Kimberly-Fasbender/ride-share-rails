@@ -90,7 +90,11 @@ describe DriversController do
   end
 
   describe "new" do
-    # Your tests go here
+    it "can get the new page" do
+      get new_driver_path
+
+      must_respond_with :success
+    end
   end
 
   describe "create" do
