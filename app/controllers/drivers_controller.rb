@@ -14,6 +14,17 @@ class DriversController < ApplicationController
   end
 
   def create
+    driver = Driver.new(driver_params)
+    # works for now, but seems pretty hacky....
+    driver.id = Driver.last.id + 1
+
+    is_successful = driver.save
+
+    if is_successful
+      redirect_to driver_path(driver.id)
+    else
+      head :bad_request
+    end
   end
 
   def edit
