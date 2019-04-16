@@ -1,2 +1,23 @@
-<h1>Passengers#index</h1>
-<p>Find me in app/views/passengers/index.html.erb</p>
+<h1>Rideshare Passengers</h1>
+
+<section>
+  <ul>
+  <li>
+    <%= button_to "Add NEW Passenger", new_passenger_path, method: :get %>
+  </li>
+    <% @passengers.each do |passenger| %>
+      <li>
+      <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{passenger.id}.png", alt: "Passenger Avatar"%>
+      <%= link_to "#{passenger.name}", passenger_path(passenger)%>
+      <ul>
+        <li>
+          <%= button_to "Delete", passenger_path(passenger), method: :delete%>
+        </li>
+        <li>
+        <%=  button_to "Edit", edit_passenger_path(passenger), method: :get%>
+        </li>
+      </ul>
+      </li>
+    <% end %>
+  </ul>
+</section>

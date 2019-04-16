@@ -1,0 +1,11 @@
+<%= form_with model: @passenger, form_class: "passenger form" do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name%>
+
+  <%= f.label "phone number".to_sym %>
+  <%= f.text_field :phone_num%>
+
+  <%= f.submit "#{action}", class: "passenger form button"%>
+
+<%end%>

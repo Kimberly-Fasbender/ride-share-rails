@@ -1,2 +1,23 @@
-<h1>Passengers#show</h1>
-<p>Find me in app/views/passengers/show.html.erb</p>
+<h1>Passenger View</h1>
+
+<article>
+
+    <h2>Name: <%= @passenger.name %></h2>
+    <ul>
+      <li>
+        <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{@passenger.id}.png", alt: "Passenger #{@passenger.id} Avatar"%>
+      </li>
+      <li>
+        <p>Phone Number: <%= @passenger.phone_num%></p>
+      </li>
+      <li>
+        <%= button_to "Delete", passenger_path(@passenger), method: :delete%>
+      </li>
+      <li>
+        <%=  button_to "Edit", edit_passenger_path(@passenger), method: :get%>
+      </li>
+      <li>
+        <%=  button_to "Passenger List", passengers_path, method: :get%>
+      </li>
+    </ul>
+    </article>
