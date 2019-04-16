@@ -18,11 +18,16 @@ describe TripsController do
   end
 
   describe "show" do
-    it "should show page for valid trip" do 
-      
+    it "should show page for valid trip" do
+      id = Trip.first.id
+      get trip_path(id)
+      must_respond_with :success
     end
 
-    it "should return 404 for invalid trip id" do 
+    it "should return 404 for invalid trip id" do
+      invalid_id = -1
+      get trip_path(invalid_id)
+      must_respond_with :not_found
     end
   end
 
