@@ -1,22 +1,41 @@
 class PassengersController < ApplicationController
   def index
+    @passengers = Passenger.all
   end
 
   def show
+    id = params[:id]
+    @passenger = Passenger.find_by(id: id)
+    unless @passenger
+      flash[:error] = "Could not find Passenger with ID: #{id}"
+      redirect_to passengers_path
+    end
   end
 
-  def destroy
+  def edit
+    id = params[:id]
+    @passenger = Passenger.find_by(id: id)
+    unless @passenger
+      flash[:error] = "Could not find Passenger with ID: #{id}"
+      redirect_to passengers_path
+    end
   end
 
   def new
+    id = params[:id]
+    @passenger = Passenger.find_by(id: id)
+    unless @passenger
+      flash[:error] = "Could not find Passenger with ID: #{id}"
+      redirect_to passengers_path
+    end
+  end
+
+  def update
   end
 
   def create
   end
 
-  def edit
-  end
-
-  def update
+  def destroy
   end
 end
