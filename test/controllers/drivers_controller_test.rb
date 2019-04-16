@@ -29,7 +29,21 @@ describe DriversController do
   end
 
   describe "edit" do
-    # Your tests go here
+    it "can get the edit page for an existing driver" do
+      driver = Driver.create(name: "Sally", vin: "YX83792834B")
+
+      get edit_driver_path(driver.id)
+
+      must_respond_with :success
+    end
+
+    it "will respond with a 404 when attempting to get the edit page for a non-existant driver" do
+      invalid_driver_id = -10
+
+      get edit_driver_path(invalid_driver_id)
+
+      must_respond_with :not_found
+    end
   end
 
   describe "update" do
