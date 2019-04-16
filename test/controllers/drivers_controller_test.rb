@@ -99,10 +99,12 @@ describe DriversController do
 
   describe "create" do
     it "can create a new task" do
+      name = "Cecilia"
+      vin = "E38497CS983X"
       driver_hash = {
-        driver: {
-          name: "Cecilia",
-          vin: "E38497CS983X",
+        "driver": {
+          name: name,
+          vin: vin,
         },
       }
 
@@ -111,8 +113,8 @@ describe DriversController do
         post drivers_path, params: driver_hash
       }.must_change "Driver.count", 1
 
-      new_driver = Driver.find_by(driver: driver_hash[:driver][:name])
-      expect(new_driver.vin.must_equal driver_hash[:driver][:vin])
+      new_driver = Driver.find_by(driver: name)
+      expect(new_driver.vin).must_equal(vin)
 
       must_respond_with :redirect
       must_redirect_to driver_path(new_driver.id)
@@ -120,6 +122,15 @@ describe DriversController do
   end
 
   describe "destroy" do
-    # Your tests go here
+    it "can delete an existing driver" do
+      new_driver = Driver.create(name: "Sleepy", vin: "SLEEPY1111")
+
+      expect {
+        delete driver_path(new_driver.id)
+      }.must_change "Driver.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to drivers_path
+    end
   end
 end
