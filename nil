@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20190416220142_add_rating_to_trips.rb
