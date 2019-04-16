@@ -98,7 +98,7 @@ describe DriversController do
   end
 
   describe "create" do
-    it "can create a new task" do
+    it "can create a new driver" do
       name = "Cecilia"
       vin = "E38497CS983X"
       driver_hash = {
