@@ -1,2 +1,11 @@
 <h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+<p>Cash me in app/views/trips/index.html.erb</p>
+
+<ul>
+  <% @trips.each do |trip| %>
+    <li>
+      <%= "ID: #{trip.id}"%>
+      <%= "Driver: #{Driver.find_by(id: trip.driver_id).name}" %>
+    </li>
+  <% end %>
+</ul>
