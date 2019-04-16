@@ -6,9 +6,9 @@ describe TripsController do
     driver = Driver.create(name: "George", vin: "X13873487YVW")
     Trip.create(passenger_id: passenger.id, driver_id: driver.id, date: Date.current, cost: 25.0, rating: 3)
   end
+
   describe "index" do
     it "should go to index page" do
-      p Trip.all
       get trips_path
       must_respond_with :success
     end

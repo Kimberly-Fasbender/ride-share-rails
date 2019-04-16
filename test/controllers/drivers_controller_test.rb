@@ -112,7 +112,7 @@ describe DriversController do
         post drivers_path, params: driver_hash
       }.must_change "Driver.count", 1
 
-      new_driver = Driver.find_by(driver: name)
+      new_driver = Driver.find_by(name: name)
       expect(new_driver.vin).must_equal(vin)
 
       must_respond_with :redirect
