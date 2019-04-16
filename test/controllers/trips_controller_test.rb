@@ -10,8 +10,10 @@ describe TripsController do
   let(:trip) {
     Trip.create(passenger_id: passenger.id, driver_id: driver.id, date: Date.current, cost: 25.0, rating: 3)
   }
+
   describe "index" do
     it "should go to index page" do
+      puts trip.passenger_id
       get trips_path
       must_respond_with :success
     end
