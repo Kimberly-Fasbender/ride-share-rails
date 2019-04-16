@@ -108,6 +108,12 @@ describe PassengersController do
   end
 
   describe "destroy" do
-    # Your tests go here
+    it "should remove passenger entry from db" do 
+      passenger = Passenger.last
+      
+    end
+
+    it "should return 404 if passenger id is invalid" do 
+    end
   end
 end

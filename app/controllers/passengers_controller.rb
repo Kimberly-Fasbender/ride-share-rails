@@ -30,7 +30,7 @@ class PassengersController < ApplicationController
     passenger = Passenger.find_by(id: id)
     if passenger && passenger.update(passenger_params)
       redirect_to passenger_path(passenger)
-    else 
+    else
       head :not_found
     end
   end
@@ -45,6 +45,13 @@ class PassengersController < ApplicationController
   end
 
   def destroy
+    passenger = Passenger.find_by(id: params[:id])
+    if passenger
+      passenger.destroy
+      redirect_to passengers_path
+    else
+      head :not_found
+    end
   end
 
   private
