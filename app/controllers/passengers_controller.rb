@@ -22,12 +22,7 @@ class PassengersController < ApplicationController
   end
 
   def new
-    id = params[:id]
-    @passenger = Passenger.find_by(id: id)
-    unless @passenger
-      flash[:error] = "Could not find Passenger with ID: #{id}"
-      redirect_to passengers_path
-    end
+    @passenger = Passenger.new
   end
 
   def update
