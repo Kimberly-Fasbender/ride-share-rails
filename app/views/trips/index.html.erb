@@ -5,7 +5,11 @@
   <% @trips.each do |trip| %>
     <li>
       <%= "ID: #{trip.id}"%>
+<<<<<<< HEAD
+      <%= "Driver: #{trip.driver.name}" if trip.driver%>
+=======
       <%= "Driver: #{trip.driver.name}" %>
+>>>>>>> f3968b6e8251a22709c1d67a75683e3730993df2
     </li>
   <% end %>
 </ul>

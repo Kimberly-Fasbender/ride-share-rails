@@ -4,6 +4,12 @@ class TripsController < ApplicationController
   end
 
   def show
+    id  = params[:id]
+    @trip = Trip.find_by(id: id)
+    unless @trip 
+      head :not_found
+    end
+
   end
 
   def create
