@@ -62,10 +62,15 @@ puts "#{passenger_failures.length} passengers failed to save"
 #     puts "Created trip: #{trip.inspect}"
 #   end
 # end
+<<<<<<< HEAD
 
 # puts "Added #{Trip.count} trip records"
 # puts "#{trip_failures.length} trips failed to save"
+=======
+>>>>>>> 969d15d2f38248be886bac50392c92a1d382ae5e
 
+# puts "Added #{Trip.count} trip records"
+# puts "#{trip_failures.length} trips failed to save"
 
 # Since we set the primary key (the ID) manually on each of the
 # tables, we've got to tell postgres to reload the latest ID

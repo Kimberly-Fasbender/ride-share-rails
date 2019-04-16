@@ -16,7 +16,6 @@ class DriversController < ApplicationController
   def create
     driver = Driver.new(driver_params)
     # works for now, but seems pretty hacky....
-    driver.id = Driver.last.id + 1
 
     is_successful = driver.save
 
