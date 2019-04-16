@@ -5,7 +5,7 @@
   <% @trips.each do |trip| %>
     <li>
       <%= "ID: #{trip.id}"%>
-      <%= "Driver: #{Driver.find_by(id: trip.driver_id).name}" %>
+      <%= "Driver: #{trip.driver.name}" if trip.driver%>
     </li>
   <% end %>
 </ul>
