@@ -9,7 +9,6 @@ class TripsController < ApplicationController
     unless @trip 
       head :not_found
     end
-
   end
 
   def create
