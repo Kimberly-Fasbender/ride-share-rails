@@ -42,35 +42,29 @@ end
 puts "Added #{Passenger.count} passenger records"
 puts "#{passenger_failures.length} passengers failed to save"
 
-# TRIP_FILE = Rails.root.join("db", "seed_data", "trips.csv")
-# puts "Loading raw trip data from #{TRIP_FILE}"
+TRIP_FILE = Rails.root.join("db", "seed_data", "trips.csv")
+puts "Loading raw trip data from #{TRIP_FILE}"
 
-# trip_failures = []
-# CSV.foreach(TRIP_FILE, :headers => true) do |row|
-#   trip = Trip.new
-#   trip.id = row["id"]
-#   trip.driver_id = row["driver_id"]
-#   trip.passenger_id = row["passenger_id"]
-#   trip.date = Date.strptime(row["date"], "%Y-%m-%d")
-#   trip.rating = row["rating"]
-#   trip.cost = row["cost"]
-#   successful = trip.save
-#   if !successful
-#     trip_failures << trip
-#     puts "Failed to save trip: #{trip.inspect}"
-#   else
-#     puts "Created trip: #{trip.inspect}"
-#   end
-# end
-<<<<<<< HEAD
+trip_failures = []
+CSV.foreach(TRIP_FILE, :headers => true) do |row|
+  trip = Trip.new
+  trip.id = row["id"]
+  trip.driver_id = row["driver_id"]
+  trip.passenger_id = row["passenger_id"]
+  trip.date = Date.strptime(row["date"], "%Y-%m-%d")
+  trip.rating = row["rating"]
+  trip.cost = row["cost"]
+  successful = trip.save
+  if !successful
+    trip_failures << trip
+    puts "Failed to save trip: #{trip.inspect}"
+  else
+    puts "Created trip: #{trip.inspect}"
+  end
+end
 
-# puts "Added #{Trip.count} trip records"
-# puts "#{trip_failures.length} trips failed to save"
-=======
->>>>>>> 969d15d2f38248be886bac50392c92a1d382ae5e
-
-# puts "Added #{Trip.count} trip records"
-# puts "#{trip_failures.length} trips failed to save"
+puts "Added #{Trip.count} trip records"
+puts "#{trip_failures.length} trips failed to save"
 
 # Since we set the primary key (the ID) manually on each of the
 # tables, we've got to tell postgres to reload the latest ID
