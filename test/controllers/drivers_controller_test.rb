@@ -49,21 +49,23 @@ describe DriversController do
   describe "update" do
     it "must be able to update an existing driver" do
       driver_hash = {
-        name: "Hey there",
-        vin: "JJJJJJ38383838",
+        driver: {
+          name: "Hey there",
+          vin: "JJJJJJ38383838",
+        },
       }
 
       driver = Driver.create(name: "That Guy", vin: "KE87398DD83")
       valid_id = driver.id
 
       expect {
-        patch update_driver_path(valid_id), params: driver_hash
+        patch driver_path(valid_id), params: driver_hash
       }.wont_change "Driver.count"
 
       driver.reload
 
-      expect(driver.name).must_equal(driver_hash[:name])
-      expect(driver.vin).must_equal(driver_hash[:vin])
+      expect(driver.name).must_equal(driver_hash[:driver][:name])
+      expect(driver.vin).must_equal(driver_hash[:driver][:vin])
 
       must_respond_with :redirect
       must_redirect_to driver_path(valid_id)
@@ -71,14 +73,16 @@ describe DriversController do
 
     it "must respond with a 404 if the driver was not found" do
       driver_hash = {
-        name: "Kim",
-        vin: "234KER3",
+        driver: {
+          name: "Kim",
+          vin: "234KER3",
+        },
       }
 
-      invalid_id = driver.id
+      invalid_id = -30
 
       expect {
-        patch update_driver_path(valid_id), params: driver_hash
+        patch driver_path(invalid_id), params: driver_hash
       }.wont_change "Driver.count"
 
       must_respond_with :not_found
