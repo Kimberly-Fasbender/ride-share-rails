@@ -10,10 +10,10 @@
       Car: <%= "#{@driver.car_make} #{@driver.car_model}" %>
     </li>
     <li>
-      Average Rating: <%= @driver.average_rating %>
+      Average Rating: <%= @driver.average_rating.round(2) %>
     </li>
     <li>
-      Total Earnings: <%= @driver.total_earnings %>
+      Total Earnings: $<%= @driver.total_earnings %>
     </li>
     <li>
       <% action = "Go Online" %>
