@@ -139,10 +139,22 @@ describe PassengersController do
 
   describe "destroy" do
     it "should remove passenger entry from db" do
-      passenger = Passenger.last
+      id = Passenger.last.id
+      passenger = Passenger.find_by(id: id)
+      expect(passenger).wont_be_nil
+      expect {
+        delete passenger_path(id)
+      }.must_change "Passenger.count", -1
+      passenger = Passenger.find_by(id: id)
+      expect(passenger).must_be_nil
     end
 
     it "should return 404 if passenger id is invalid" do
+      invalid_id = -1
+      expect {
+        delete passenger_path(invalid_id)
+      }.wont_change "Passenger.count"
+      must_respond_with :not_found
     end
   end
 end
