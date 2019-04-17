@@ -1,4 +1,5 @@
 require "csv"
+require "faker"
 
 DRIVER_FILE = Rails.root.join("db", "seed_data", "drivers.csv")
 puts "Loading raw driver data from #{DRIVER_FILE}"
@@ -9,6 +10,8 @@ CSV.foreach(DRIVER_FILE, :headers => true) do |row|
   driver.id = row["id"]
   driver.name = row["name"]
   driver.vin = row["vin"]
+  driver.car_make = Faker::Vehicle.make
+  driver.car_model = Faker::Vehicle.model
   successful = driver.save
   if !successful
     driver_failures << driver
