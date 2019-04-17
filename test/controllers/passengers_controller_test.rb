@@ -72,6 +72,22 @@ describe PassengersController do
         patch passenger_path(invalid_id), params: passenger_hash
       }.wont_change "Passenger.count"
 
+      must_respond_with :not_found
+    end
+
+    it "should return 400 if params validtion is invalid" do
+      id = Passenger.last.id
+      passenger_hash = {
+        passenger: {
+          name: nil,
+          phone_num: nil,
+        },
+      }
+
+      expect {
+        patch passenger_path(id), params: passenger_hash
+      }.wont_change "Passenger.count"
+
       must_respond_with :bad_request
     end
   end
@@ -99,6 +115,22 @@ describe PassengersController do
       new_passenger = Passenger.last
       expect(new_passenger.name).must_equal "Harry Thumblina"
       expect(new_passenger.phone_num).must_equal "253-555-2609"
+    end
+
+    it "will return 400 if params validation is invalid " do
+      id = Passenger.last.id
+      passenger_hash = {
+        passenger: {
+          name: nil,
+          phone_num: nil,
+        },
+      }
+
+      expect {
+        patch passenger_path(id), params: passenger_hash
+      }.wont_change "Passenger.count"
+
+      must_respond_with :bad_request
     end
 
     #   it "will be redirected if given invalid params" do  #<-- will need this later ?
