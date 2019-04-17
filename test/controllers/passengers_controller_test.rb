@@ -21,8 +21,7 @@ describe PassengersController do
     it "will return to index if invalid id is used" do
       invalid_id = -1
       get passenger_path(invalid_id)
-      must_respond_with :redirect
-      must_redirect_to passengers_path
+      must_respond_with :not_found
     end
   end
 
@@ -36,8 +35,7 @@ describe PassengersController do
     it "will redirct to index if invalid id is used" do
       invalid_id = -1
       get edit_passenger_path(invalid_id)
-      must_respond_with :redirect
-      must_redirect_to passengers_path
+      must_respond_with :not_found
     end
   end
 
@@ -74,7 +72,7 @@ describe PassengersController do
         patch passenger_path(invalid_id), params: passenger_hash
       }.wont_change "Passenger.count"
 
-      must_respond_with :not_found
+      must_respond_with :bad_request
     end
   end
 
