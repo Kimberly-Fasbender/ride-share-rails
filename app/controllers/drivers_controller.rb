@@ -14,15 +14,12 @@ class DriversController < ApplicationController
   end
 
   def create
-    driver = Driver.new(driver_params)
-    # works for now, but seems pretty hacky....
+    @driver = Driver.new(driver_params)
 
-    is_successful = driver.save
-
-    if is_successful
-      redirect_to driver_path(driver.id)
+    if @driver.save
+      redirect_to driver_path(@driver.id)
     else
-      head :bad_request
+      render :new, status: :bad_request
     end
   end
 
@@ -33,13 +30,16 @@ class DriversController < ApplicationController
   end
 
   def update
-    driver = Driver.find_by(id: params[:id])
+    @driver = Driver.find_by(id: params[:id])
 
-    if driver.nil?
+    if @driver.nil?
       head :not_found
     else
-      is_successful = driver.update(driver_params)
-      redirect_to driver_path(driver.id)
+      if @driver.update(driver_params)
+        redirect_to driver_path(@driver.id)
+      else
+        render :edit, status: :bad_request
+      end
     end
   end
 
@@ -57,6 +57,6 @@ class DriversController < ApplicationController
   private
 
   def driver_params
-    return params.require(:driver).permit(:name, :vin)
+    return params.require(:driver).permit(:name, :vin, :car_make, :car_model)
   end
 end
