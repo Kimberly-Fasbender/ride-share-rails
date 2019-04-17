@@ -9,6 +9,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav>
+    <%= link_to "S&K RideShare", root_path %>
+    <div class="dropdown">
+      <button class="dropbtn">Drivers</button>
+      <div class="dropdown-content">
+        <%= link_to "List Drivers", drivers_path %>
+        <%= link_to "Add Driver", new_driver_path %>
+      </div>
+    </div> 
+
+    <div class="dropdown">
+      <button class="dropbtn">Passengers</button>
+      <div class="dropdown-content">
+        <%= link_to "List Passengers", passengers_path %>
+        <%= link_to "Add Passenger", new_passenger_path %>
+      </div>
+    </div>  
+  </nav>
+
   <body>
     <%= yield %>
   </body>
