@@ -13,4 +13,8 @@ class Driver < ApplicationRecord
     end
     return sum / rated_trips.count.to_f
   end
+
+  def total_earnings
+    return self.trips.sum { |trip| trip.cost } / 100
+  end
 end

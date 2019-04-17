@@ -30,4 +30,10 @@ class TripsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def trip_params
+    return params.require(:trip).permit(:cost, :driver_id, :passenger_id, :date, :rating)
+  end
 end
