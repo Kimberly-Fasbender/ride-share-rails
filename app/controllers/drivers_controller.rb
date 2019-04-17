@@ -60,7 +60,13 @@ class DriversController < ApplicationController
   def availability
     driver = Driver.find_by(id: params[:id])
 
-    !driver ? (head :not_found) : driver.toggle(:available)
+    if !driver
+      head :not_found
+    else
+      driver.toggle(:available)
+      driver.save
+    end
+
     redirect_to driver_path(driver.id)
   end
 
