@@ -6,19 +6,13 @@ class PassengersController < ApplicationController
   def show
     id = params[:id]
     @passenger = Passenger.find_by(id: id)
-    unless @passenger
-      flash[:error] = "Could not find Passenger with ID: #{id}"
-      redirect_to passengers_path
-    end
+    head :not_found unless @passenger
   end
 
   def edit
     id = params[:id]
     @passenger = Passenger.find_by(id: id)
-    unless @passenger
-      flash[:error] = "Could not find Passenger with ID: #{id}"
-      redirect_to passengers_path
-    end
+    head :not_found unless @passenger
   end
 
   def new
@@ -31,17 +25,17 @@ class PassengersController < ApplicationController
     if passenger && passenger.update(passenger_params)
       redirect_to passenger_path(passenger)
     else
-      head :not_found
+      render :edit, status: :bad_request
     end
   end
 
   def create
     passenger = Passenger.new(passenger_params)
-    unless passenger.save # was getting duplicate key assignment error, ran this command in console ActiveRecord::Base.connection.reset_pk_sequence!('passengers')
-      flash[:error] = "Unable to add Passenger, please try again."
-      head :bad_request # returns 400 then redirects, can I do this?
+    if passenger && passenger.save
+      redirect_to passengers_path
+    else
+      render :edit, status: :bad_request
     end
-    redirect_to passengers_path
   end
 
   def destroy
