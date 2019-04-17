@@ -122,10 +122,12 @@ describe DriversController do
 
   describe "destroy" do
     it "can delete an existing driver" do
-      new_driver = Driver.create(name: "Sleepy", vin: "SLEEPY1111", car_make: "asd", car_model: "adsd")
+      new_driver = Driver.create(name: "Sleepy", vin: "SLEEPY1111")
+
       expect {
         delete driver_path(new_driver.id)
       }.must_change "Driver.count", -1
+
       must_respond_with :redirect
       must_redirect_to drivers_path
     end
