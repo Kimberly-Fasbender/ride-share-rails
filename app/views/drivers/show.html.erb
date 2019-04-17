@@ -16,7 +16,7 @@
       Total Earnings: <%= @driver.total_earnings %>
     </li>
     <li>
-      <%= button_to "Go Online" %>
+      <%= button_to "Go Online", availability_path(@driver.id), method: :patch %>
     </li>
     <li>
       <%= button_to "Delete", driver_path(@driver), method: :delete%>
