@@ -21,6 +21,11 @@ class TripsController < ApplicationController
   end
 
   def edit
+    id = params[:id]
+    @trip = Trip.find_by(id: id)
+    unless @trip
+      head :not_found
+    end
   end
 
   def destroy
