@@ -49,6 +49,9 @@ class DriversController < ApplicationController
     if driver.nil?
       head :not_found
     else
+      driver.trips.each do |trip|
+        trip.update(driver_id: 0)
+      end
       driver.destroy
       redirect_to drivers_path
     end

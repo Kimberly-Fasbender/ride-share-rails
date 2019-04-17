@@ -10,9 +10,10 @@ CSV.foreach(DRIVER_FILE, :headers => true) do |row|
   driver.id = row["id"]
   driver.name = row["name"]
   driver.vin = row["vin"]
-  if row["id"] == 0
+  if row["id"] == "0"
     driver.car_make = "Deleted"
     driver.car_model = "Deleted"
+    driver.available = false
   else
     driver.car_make = Faker::Vehicle.make
     driver.car_model = Faker::Vehicle.model
