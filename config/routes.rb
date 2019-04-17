@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :drivers
 
   resources :trips
+
+  patch "/drivers/:id/availability", to: "tasks#availability", as: "availability"
 end
