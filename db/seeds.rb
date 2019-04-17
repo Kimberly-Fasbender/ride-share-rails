@@ -10,8 +10,13 @@ CSV.foreach(DRIVER_FILE, :headers => true) do |row|
   driver.id = row["id"]
   driver.name = row["name"]
   driver.vin = row["vin"]
-  driver.car_make = Faker::Vehicle.make
-  driver.car_model = Faker::Vehicle.model
+  if row["id"] == 0
+    driver.car_make = "Deleted"
+    driver.car_model = "Deleted"
+  else
+    driver.car_make = Faker::Vehicle.make
+    driver.car_model = Faker::Vehicle.model
+  end
   successful = driver.save
   if !successful
     driver_failures << driver
@@ -20,9 +25,6 @@ CSV.foreach(DRIVER_FILE, :headers => true) do |row|
     puts "Created driver: #{driver.inspect}"
   end
 end
-
-puts "Added #{Driver.count} driver records"
-puts "#{driver_failures.length} drivers failed to save"
 
 PASSENGER_FILE = Rails.root.join("db", "seed_data", "passengers.csv")
 puts "Loading raw passenger data from #{PASSENGER_FILE}"
@@ -41,9 +43,6 @@ CSV.foreach(PASSENGER_FILE, :headers => true) do |row|
     puts "Created passenger: #{passenger.inspect}"
   end
 end
-
-puts "Added #{Passenger.count} passenger records"
-puts "#{passenger_failures.length} passengers failed to save"
 
 TRIP_FILE = Rails.root.join("db", "seed_data", "trips.csv")
 puts "Loading raw trip data from #{TRIP_FILE}"
@@ -66,8 +65,14 @@ CSV.foreach(TRIP_FILE, :headers => true) do |row|
   end
 end
 
+puts "Added #{Passenger.count} passenger records"
+puts "#{passenger_failures.length} passengers failed to save"
+
 puts "Added #{Trip.count} trip records"
 puts "#{trip_failures.length} trips failed to save"
+
+puts "Added #{Driver.count} driver records"
+puts "#{driver_failures.length} drivers failed to save"
 
 # Since we set the primary key (the ID) manually on each of the
 # tables, we've got to tell postgres to reload the latest ID
