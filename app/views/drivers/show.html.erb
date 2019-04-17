@@ -10,7 +10,10 @@
       Car: <%= "#{@driver.car_make} #{@driver.car_model}" %>
     </li>
     <li>
-      Average Rating: NEED TO UPDATE ONCE AVERAGE RATING IS DONE...
+      Average Rating: <%= @driver.average_rating %>
+    </li>
+    <li>
+      Total Earnings: <%= @driver.total_earnings %>
     </li>
     <li>
       <%= button_to "Go Online" %>
