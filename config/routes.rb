@@ -9,10 +9,12 @@ Rails.application.routes.draw do
 
   root to: "drivers#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :passengers
+  resources :passengers do
+    resources :trips, only: :create
+  end
 
   resources :drivers
   patch "/drivers/:id/availability", to: "drivers#availability", as: "availability"
 
-  resources :trips
+  resources :trips, except: [:new, :index]
 end

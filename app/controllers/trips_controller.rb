@@ -1,8 +1,4 @@
 class TripsController < ApplicationController
-  def index
-    @trips = Trip.all
-  end
-
   def show
     id = params[:id]
     @trip = Trip.find_by(id: id)
@@ -12,9 +8,6 @@ class TripsController < ApplicationController
   end
 
   def create
-  end
-
-  def new
   end
 
   def update
