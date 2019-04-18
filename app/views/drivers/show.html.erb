@@ -10,7 +10,7 @@
       Car: <%= "#{@driver.car_make} #{@driver.car_model}" %>
     </li>
     <li>
-      Average Rating: <%= @driver.average_rating.round(2) %>
+      Average Rating: <%= @driver.average_rating ?  @driver.average_rating.round(2) : "No Rating" %>
     </li>
     <li>
       Total Earnings: $<%= @driver.total_earnings.round(2) %>
