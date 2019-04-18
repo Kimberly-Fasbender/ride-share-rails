@@ -2,14 +2,17 @@ require "test_helper"
 
 describe TripsController do
   before do
-    passenger = Passenger.create(name: "Anubhav Singh", phone_num: "253-555-1474")
-    driver = Driver.create(name: "George", vin: "X13873487YVW", car_make: "", car_model: "")
-    Trip.create(passenger_id: passenger.id, driver_id: driver.id, date: Date.current, cost: 25.0, rating: 3)
+    passenger = Passenger.new(name: "Anubhav Singh", phone_num: "253-555-1474")
+    passenger.save
+    driver = Driver.new(name: "George", vin: "X13873487YVW", car_make: "some", car_model: "car")
+    driver.save
+    t = Trip.new(passenger_id: passenger.id, driver_id: driver.id, date: Date.current, cost: 25.0, rating: 3)
+    t.save
   end
 
   describe "show" do
     it "should show page for valid trip" do
-      id = Trip.first.id
+      id = Trip.last.id
       get trip_path(id)
       must_respond_with :success
     end
