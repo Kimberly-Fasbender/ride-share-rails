@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :passengers do
     resources :trips, only: :create
   end
+  get "/passengers/:id/trips", to: "passengers#show"
 
   resources :drivers
   patch "/drivers/:id/availability", to: "drivers#availability", as: "availability"

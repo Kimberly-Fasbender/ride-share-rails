@@ -7,7 +7,7 @@ class Driver < ApplicationRecord
   validates :car_model, presence: true
 
   def self.next_available
-    return Driver.where(available: true).order(:updated_at).reverse_order
+    return Driver.where(available: true).order(:updated_at).first
   end
 
   def average_rating
