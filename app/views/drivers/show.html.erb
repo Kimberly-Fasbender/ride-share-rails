@@ -13,7 +13,7 @@
       Average Rating: <%= @driver.average_rating ?  @driver.average_rating.round(2) : "No Rating" %>
     </li>
     <li>
-      Total Earnings: $<%= @driver.total_earnings %>
+      Total Earnings: $<%= @driver.total_earnings.round(2) %>
     </li>
     <li>
       <% action = "Go Online" %>
@@ -33,4 +33,8 @@
     </li>
   </ul>
 </article>
+
+<section>
+  <%= render partial: 'trip_table', locals: { :trips => @driver.trips } %>
+</section>
 
