@@ -35,6 +35,17 @@ class TripsController < ApplicationController
   end
 
   def update
+    @trip = Trip.find_by(id: params[:id])
+
+    if @trip.nil?
+      head :not_found
+    else
+      if @trip.update(trip_params)
+        redirect_to trip_path(@trip.id)
+      else
+        render :edit, status: :bad_request
+      end
+    end
   end
 
   def edit
@@ -51,6 +62,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    return params.require(:trips).permit(:cost, :driver_id, :passenger_id, :date, :rating)
+    return params.require(:trip).permit(:cost, :driver_id, :passenger_id, :date, :rating)
   end
 end
