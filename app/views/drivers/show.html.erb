@@ -10,13 +10,17 @@
       Car: <%= "#{@driver.car_make} #{@driver.car_model}" %>
     </li>
     <li>
-      Average Rating: <%= @driver.average_rating %>
+      Average Rating: <%= @driver.average_rating.round(2) %>
     </li>
     <li>
-      Total Earnings: <%= @driver.total_earnings %>
+      Total Earnings: $<%= @driver.total_earnings %>
     </li>
     <li>
-      <%= button_to "Go Online" %>
+      <% action = "Go Online" %>
+      <% if @driver.available == true %>
+        <% action = "Go Offline" %>
+      <% end %>
+      <%= button_to action, availability_path(@driver.id), method: :patch %>
     </li>
     <li>
       <%= button_to "Delete", driver_path(@driver), method: :delete%>

@@ -1,6 +1,15 @@
 require "test_helper"
 
 describe DriversController do
+  before do
+    @driver = Driver.create(
+      name: "George",
+      vin: "X1838923498",
+      car_make: "Honda",
+      car_model: "Civic",
+    )
+  end
+
   describe "index" do
     it "can get index" do
       get drivers_path
@@ -10,8 +19,7 @@ describe DriversController do
 
   describe "show" do
     it "can show an existing valid driver" do
-      driver = Driver.create(name: "George", vin: "X13873487YVW")
-      valid_id = driver.id
+      valid_id = @driver.id
 
       get driver_path(valid_id)
 
@@ -29,9 +37,11 @@ describe DriversController do
 
   describe "edit" do
     it "can get the edit page for an existing driver" do
-      driver = Driver.create(name: "Sally", vin: "YX83792834B")
+      puts "######################################"
+      puts @driver.id
+      puts @driver
 
-      get edit_driver_path(driver.id)
+      get edit_driver_path(@driver.id)
 
       must_respond_with :success
     end
@@ -54,17 +64,16 @@ describe DriversController do
         },
       }
 
-      driver = Driver.create(name: "That Guy", vin: "KE87398DD83")
-      valid_id = driver.id
+      valid_id = @driver.id
 
       expect {
         patch driver_path(valid_id), params: driver_hash
       }.wont_change "Driver.count"
 
-      driver.reload
+      @driver.reload
 
-      expect(driver.name).must_equal(driver_hash[:driver][:name])
-      expect(driver.vin).must_equal(driver_hash[:driver][:vin])
+      expect(@driver.name).must_equal(driver_hash[:driver][:name])
+      expect(@driver.vin).must_equal(driver_hash[:driver][:vin])
 
       must_respond_with :redirect
       must_redirect_to driver_path(valid_id)
@@ -100,10 +109,15 @@ describe DriversController do
     it "can create a new driver" do
       name = "Cecilia"
       vin = "E38497CS983X"
+      car_make = "Ford"
+      car_model = "Fusion"
+
       driver_hash = {
         "driver": {
           name: name,
           vin: vin,
+          car_make: car_make,
+          car_model: car_model,
         },
       }
 
@@ -122,14 +136,29 @@ describe DriversController do
 
   describe "destroy" do
     it "can delete an existing driver" do
-      new_driver = Driver.create(name: "Sleepy", vin: "SLEEPY1111")
-
       expect {
-        delete driver_path(new_driver.id)
+        delete driver_path(@driver.id)
       }.must_change "Driver.count", -1
 
       must_respond_with :redirect
       must_redirect_to drivers_path
+    end
+  end
+
+  describe "availability" do
+    it "can change the driver's availability from true to false" do
+      expect(@driver.available).must_equal true
+
+      expect {
+        patch availability_path(@driver.id)
+      }.wont_change "Driver.count"
+
+      @driver.reload
+
+      expect(@driver.available).must_equal false
+    end
+
+    it "can change the driver's availability from fals to true" do
     end
   end
 end
