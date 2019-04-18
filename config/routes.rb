@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :drivers
   patch "/drivers/:id/availability", to: "drivers#availability", as: "availability"
 
-  resources :trips
+  resources :trips, except: [:new, :index]
 end
