@@ -44,7 +44,59 @@ describe TripsController do
   end
 
   describe "update" do
-    # Your tests go here
+    it "must be able to update an existing trip" do
+      passenger = Passenger.create(name: "Kim Fasbender", phone_num: "555-555-5555")
+      driver = Driver.create(name: "Hillary", vin: "3453XXXXXXX", car_make: "Ford", car_model: "Cat")
+      trip_hash = {
+        trip: {
+          cost: 35.35,
+          driver_id: driver.id,
+          passenger_id: passenger.id,
+          date: Date.current + 1,
+          rating: 4,
+        },
+      }
+
+      trip = Trip.last
+      valid_id = trip.id
+
+      expect {
+        patch trip_path(valid_id), params: trip_hash
+      }.wont_change "Trip.count"
+
+      trip.reload
+
+      expect(trip.cost).must_equal(trip_hash[:trip][:cost])
+      expect(trip.driver_id).must_equal(trip_hash[:trip][:driver_id])
+      expect(trip.passenger_id).must_equal(trip_hash[:trip][:passenger_id])
+      expect(trip.date).must_equal(trip_hash[:trip][:date])
+      expect(trip.rating).must_equal(trip_hash[:trip][:rating])
+
+      must_respond_with :redirect
+      must_redirect_to trip_path(valid_id)
+    end
+
+    it "must respond with a 404 if the trip was not found" do
+      passenger = Passenger.create(name: "Kim Fasbender", phone_num: "555-555-5555")
+      driver = Driver.create(name: "Hillary", vin: "3453XXXXXXX", car_make: "Ford", car_model: "Cat")
+      trip_hash = {
+        trip: {
+          cost: 35.35,
+          driver_id: driver.id,
+          passenger_id: passenger.id,
+          date: Date.current + 1,
+          rating: 4,
+        },
+      }
+
+      invalid_id = -30
+
+      expect {
+        patch trip_path(invalid_id), params: trip_hash
+      }.wont_change "Trip.count"
+
+      must_respond_with :not_found
+    end
   end
 
   describe "create" do
