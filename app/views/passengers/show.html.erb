@@ -1,7 +1,6 @@
 <h1>Passenger View</h1>
 
 <article>
-<<<<<<< HEAD
   <section>
     <h2>Name: <%= @passenger.name %></h2>
     <%if flash[:error]%>
@@ -11,10 +10,6 @@
       <h3><%= flash[:success]%></h3>
     <%end%>
   </section>
-=======
-
-  <h2>Name: <%= @passenger.name %></h2>
->>>>>>> de5ecbf7f74288e87a0b2f03ed971980cabf6a88
   <ul>
     <li>
       <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{@passenger.id}.png", alt: "Passenger #{@passenger.id} Avatar"%>
@@ -23,15 +18,12 @@
       <p>Phone Number: <%= @passenger.phone_num%></p>
     </li>
     <li>
-<<<<<<< HEAD
       <p>Total Spent: <%= @passenger.total_spent %></p>
     </li>
     <li>
       <%= button_to "Request Trip", passenger_trips_path(@passenger)%>
     </li>
     <li>
-=======
->>>>>>> de5ecbf7f74288e87a0b2f03ed971980cabf6a88
       <%= button_to "Delete", passenger_path(@passenger), method: :delete%>
     </li>
     <li>
@@ -41,12 +33,8 @@
       <%=  button_to "Passenger List", passengers_path, method: :get%>
     </li>
   </ul>
-<<<<<<< HEAD
-  </article>
-=======
 </article>
 
 <section>
   <%= render partial: 'trip_table', locals: { trips: @passenger.trips } %>
 </section>
->>>>>>> de5ecbf7f74288e87a0b2f03ed971980cabf6a88
