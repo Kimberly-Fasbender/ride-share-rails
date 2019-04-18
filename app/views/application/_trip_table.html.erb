@@ -13,15 +13,6 @@
     </thead>
     <tbody>   
 
-      <% if @passenger.nil? && @driver.nil? %>
-        <% trips = [] %>
-        <% trips << @trip %>
-      <% elsif @trip.nil? && @driver.nil? %>
-        <% trips = @passenger.trips %>
-      <% elsif @trip.nil? && @passenger.nil? %>
-        <% trips = @driver.trips %>
-      <% end %>
-
       <% trips.each do |trip| %>
         <tr>
           <td>

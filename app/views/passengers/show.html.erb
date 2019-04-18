@@ -23,5 +23,5 @@
 </article>
 
 <section>
-  <%= render 'trip_table' %>
+  <%= render partial: 'trip_table', locals: { trips: @passenger.trips } %>
 </section>
