@@ -13,8 +13,8 @@ class Driver < ApplicationRecord
   def average_rating
     rated_trips = trips.where.not(rating: nil)
     return if rated_trips.empty?
-    sum = trips.sum do |trip|
-      trip.rating if trip.rating
+    sum = rated_trips.sum do |trip|
+      trip.rating
     end
     return (sum / rated_trips.count.to_f)
   end
