@@ -1,44 +1,6 @@
 <h1>Trip #<%= @trip.id %></h1>
 
-<article>
-  <table>
-    <thead>
-      <tr>
-        <th width="10%">ID</th>
-        <th width="10%">Date</th>
-        <th width="20%">Driver</th>
-        <th width="20%">Passenger</th>
-        <th widtt="10%">Price</th>
-        <th width="10%">Rating</th>
-        <th width="20%">Update</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr> 
-        <td>
-          <%= link_to "#{@trip.id}", trip_path(@trip.id) %> 
-        </td>
-        <td>
-          <%= @trip.date %> 
-        </td>
-        <td>
-          <%= link_to "#{@trip.driver.name}", driver_path(@trip.driver.id) %> 
-        </td>
-        <td>
-          <%= link_to "#{@trip.passenger.name}", passenger_path(@trip.passenger.id) %> 
-        </td>
-        <td>
-          <%= @trip.cost %> 
-        </td>
-        <td>
-          <%= @trip.rating %> 
-        </td>
-        <td>
-          <%= link_to "Edit", edit_trip_path(@trip.id) %> 
-          <%= link_to "Delete - needs updating" %>
-        </td> 
-      </tr>
-    </tbody>
-  </table>
-</article>
+<section>
+  <%= render 'trip_table' %>
+</section>
 
