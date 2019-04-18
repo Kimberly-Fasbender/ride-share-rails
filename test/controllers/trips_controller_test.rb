@@ -3,7 +3,7 @@ require "test_helper"
 describe TripsController do
   before do
     passenger = Passenger.create(name: "Anubhav Singh", phone_num: "253-555-1474")
-    driver = Driver.create(name: "George", vin: "X13873487YVW")
+    driver = Driver.create(name: "George", vin: "X13873487YVW", car_make: "", car_model: "")
     Trip.create(passenger_id: passenger.id, driver_id: driver.id, date: Date.current, cost: 25.0, rating: 3)
   end
 
@@ -29,8 +29,11 @@ describe TripsController do
   end
 
   describe "edit" do
+    passenger = Passenger.create(name: "Anubhav Singh", phone_num: "253-555-1474")
+    driver = Driver.create(name: "George", vin: "X13873487YVW", car_make: "", car_model: "")
+    Trip.create(passenger_id: passenger.id, driver_id: driver.id, date: Date.current, cost: 25.0, rating: 3)
     it "can get the edit page" do
-      get edit_trip_path(Trip.first.id)
+      get edit_trip_path(Trip.last.id)
 
       must_respond_with :success
     end
@@ -51,7 +54,7 @@ describe TripsController do
   describe "create" do
     it "will create a new trip" do
       passenger = Passenger.create(name: "New Anubhav Singh", phone_num: "253-595-1474")
-      driver = Driver.create(name: "New George", vin: "X12273487YVW")
+      driver = Driver.create(name: "New George", vin: "X12273487YVW", car_make: "", car_model: "")
       trip_hash = { trip: { driver_id: driver.id,
                             passenger_id: passenger.id,
                             date: Date.current,
