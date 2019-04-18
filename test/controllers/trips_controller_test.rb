@@ -7,13 +7,6 @@ describe TripsController do
     Trip.create(passenger_id: passenger.id, driver_id: driver.id, date: Date.current, cost: 25.0, rating: 3)
   end
 
-  describe "index" do
-    it "should go to index page" do
-      # get trips_path
-      # must_respond_with :success
-    end
-  end
-
   describe "show" do
     it "should show page for valid trip" do
       id = Trip.first.id
