@@ -1,4 +1,4 @@
-<%= form_with model: @trip, form_class: "rate trip form" do |f| %>
+<%= form_with model: @trip, url: :trip_path(@trip.id), method: :patch, form_class: "rate trip form" do |f| %>
 
   <%= f.label :rate_trip %>
   <%= f.number_field :rating, in: 1..5, step: 1  %>

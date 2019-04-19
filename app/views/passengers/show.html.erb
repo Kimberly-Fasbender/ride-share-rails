@@ -20,16 +20,14 @@
     <li>
       <p>Total Spent: <%= @passenger.total_spent %></p>
     </li>
-    <% @trip_in_progress =  @passenger.trip_in_progress%>
-    <% if @trip_in_progress %>
     <li>
-      <%= render partial: 'rate_trip' %>
-      </li>
-    <%else%>
-      <li>
-        <%= button_to "Request Trip", passenger_trips_path(@passenger)%>
-      </li>
-    <%end%>
+      <% @trip_in_progress =  @passenger.trip_in_progress%>
+      <% if @trip_in_progress %>
+        <%= render partial: 'rate_trip' %>
+      <%else%>
+          <%= button_to "Request Trip", passenger_trips_path(@passenger)%>
+      <%end%>
+    </li>
     <li>
       <%= button_to "Delete", passenger_path(@passenger), method: :delete%>
     </li>
