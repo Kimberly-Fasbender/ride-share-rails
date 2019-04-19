@@ -9,8 +9,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav>
-    <%= link_to "S&K RideShare", root_path %>
+  <nav class="main_nav">
+    <%= link_to image_tag("https://i.ibb.co/yQpRhS3/k-S.png", 
+                          size: "175x75", 
+                          alt: "K&S RideShare Logo"), root_path %>
     <div class="dropdown">
       <button class="dropbtn">Drivers</button>
       <div class="dropdown-content">
