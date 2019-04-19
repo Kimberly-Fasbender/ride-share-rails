@@ -107,6 +107,6 @@ text-shadow: hotpink 0 -1px 0, purple 0 2px 1px;
 
 
 .button:active {
-  text-shadow: hsla(210,100%,20%,.3) 0 -1px 0, hsl(210,100%,85%) 0 2px 1px, hsla(200,100%,80%,1) 0 0 5px, hsla(210,100%,50%,.6) 0 0 20px;
+  text-shadow: hsla(210,100%,20%,.3) 0 -1px 0, hotpink 0 2px 1px, rgba(242, 103, 226, 0.516) 0 0 5px, rgba(165, 149, 172, 0.543) 0 0 20px;
 }
 
