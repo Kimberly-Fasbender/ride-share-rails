@@ -144,6 +144,25 @@ describe TripsController do
   end
 
   describe "destroy" do
-    # Your tests go here
+    it "can delete an existing trip" do
+      valid_id = Trip.last.id
+
+      expect {
+        delete trip_path(valid_id)
+      }.must_change "Trip.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it "must respond with 404 when tring to delete a non-existant trip" do
+      invalid_id = -100
+
+      expect {
+        delete trip_path(invalid_id)
+      }.wont_change "Trip.count"
+
+      must_respond_with :not_found
+    end
   end
 end
