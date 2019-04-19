@@ -34,6 +34,9 @@ class TripsController < ApplicationController
     end
   end
 
+  def complete
+  end
+
   def update
     @trip = Trip.find_by(id: params[:id])
 
