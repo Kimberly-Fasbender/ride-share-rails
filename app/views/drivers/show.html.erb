@@ -20,13 +20,13 @@
       <% if @driver.available == true %>
         <% action = "Go Offline" %>
       <% end %>
-      <%= button_to action, availability_path(@driver.id), method: :patch %>
+      <%= button_to action, availability_path(@driver.id), method: :patch, class: "button" %>
     </li>
     <li>
-      <%= button_to "Delete", driver_path(@driver), method: :delete %>
+      <%= button_to "Delete", driver_path(@driver), method: :delete, class: "button" %>
     </li>
     <li>
-      <%=  button_to "Edit", edit_driver_path(@driver), method: :get %>
+      <%=  button_to "Edit", edit_driver_path(@driver), method: :get, class: "button" %>
     </li>
   </ul>
 </article>
