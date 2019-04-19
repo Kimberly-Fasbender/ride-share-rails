@@ -23,13 +23,10 @@
       <%= button_to action, availability_path(@driver.id), method: :patch %>
     </li>
     <li>
-      <%= button_to "Delete", driver_path(@driver), method: :delete%>
+      <%= button_to "Delete", driver_path(@driver), method: :delete %>
     </li>
     <li>
-      <%=  button_to "Edit", edit_driver_path(@driver), method: :get%>
-    </li>
-    <li>
-      <%=  button_to "Driver List", drivers_path, method: :get%>
+      <%=  button_to "Edit", edit_driver_path(@driver), method: :get %>
     </li>
   </ul>
 </article>

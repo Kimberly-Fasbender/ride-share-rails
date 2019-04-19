@@ -2,24 +2,21 @@
 
 <section>
   <ul>
-    <li>
-      <%= button_to "Add Driver", new_driver_path, method: :get %>
-    </li>
-      <% @drivers.each do |driver| %>
+    <% @drivers.each do |driver| %>
       <% if driver.id == 0%>
         <% next %>
       <% end %>
-    <li>
-      <%= image_tag "https://api.adorable.io/avatars/200/.driver#{driver.id}.png", alt: "#{driver.name}'s Avatar"%>
-      <%= link_to "#{driver.name}", driver_path(driver.id) %>
-    </li>
-    <li>
-      <%= button_to "Delete", driver_path(driver.id), method: :delete %>
-    </li>
-    <li>
-      <%=  button_to "Edit", edit_driver_path(driver.id), method: :get %>
-    </li>
-      <% end %>
+      <li>
+        <%= image_tag "https://api.adorable.io/avatars/200/.driver#{driver.id}.png", alt: "#{driver.name}'s Avatar"%>
+        <%= link_to "#{driver.name}", driver_path(driver.id) %>
+      </li>
+      <li>
+        <%= button_to "Delete", driver_path(driver.id), method: :delete %>
+      </li>
+      <li>
+        <%=  button_to "Edit", edit_driver_path(driver.id), method: :get %>
+      </li>
+    <% end %>
   </ul>
 </section>
 
