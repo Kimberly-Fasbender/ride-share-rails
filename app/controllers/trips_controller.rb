@@ -35,6 +35,14 @@ class TripsController < ApplicationController
   end
 
   def complete
+    @trip = Trip.find_by(id: params[:id])
+    driver = @trip.driver
+    if @trip && @trip.update(trip_params) && driver.update(available: true)
+      flash[:success] = "Driver: #{driver.name} given rating of #{@trip.rating}."
+    else
+      flash[:error] = "Unable to rate trip, try again"
+    end
+    redirect_to passenger_path(@trip.passenger)
   end
 
   def update

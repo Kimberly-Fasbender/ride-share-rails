@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "drivers#index"
+  root to: "homepages#show"
 
   resources :trips, except: [:new, :index]
   patch "/trips/:id/complete", to: "trips#complete", as: "complete_trip"
