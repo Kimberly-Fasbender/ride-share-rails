@@ -10,7 +10,7 @@
         <%= image_tag "https://api.adorable.io/avatars/200/.driver#{driver.id}.png", alt: "#{driver.name}'s Avatar"%>
       </li>
       <li>
-        <%= button_to "#{driver.name}", driver_path(driver.id), class: "button" %>
+        <%= button_to "#{driver.name}", driver_path(driver.id), method: :get, class: "button" %>
       </li>
       <li>
         <%= button_to "Delete", driver_path(driver.id), method: :delete, class: "button" %>
