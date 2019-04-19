@@ -73,3 +73,54 @@
 .dropdown:hover .dropbtn {
   background-color: black;
 }
+
+
+/* Button style */
+.button {
+  width: auto;
+  height: 2em;
+  border-radius: .5em;
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+  -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+  -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+  
+  linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+  hsl(0,0%,90%) 47%, 
+  hsl(0,0%,78%) 53%,
+  hsl(0,0%,70%)100%);
+  
+  
+  position: relative;
+  /* margin: 40px auto; */
+  outline: none;
+  
+  font: bold 1em/1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  text-align: center;
+  color: hsla(0,0%,20%,1);
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+  
+  background-color: hsl(0,0%,90%);
+  box-shadow: inset hsla(0,0%,15%,  1) 0  0px 0px 2px, /* border */
+  inset hsla(0,0%,15%, .8) 0 -1px 5px 2px, /* soft SD */
+  inset hsla(0,0%,0%, .25) 0 -1px 0px 4px, /* bottom SD */
+  inset hsla(0,0%,100%,.7) 0  2px 1px 4px, /* top HL */
+  
+  hsla(0,0%, 0%,.15) 0 -5px 6px 2px, /* outer SD */
+  hsla(0,0%,100%,.5) 0  5px 6px 2px; /* outer HL */ 
+  transition: color .2s;
+    
+}
+
+.button:hover {
+background-color: black;
+color: white;
+box-shadow: none;
+background-image: none;
+text-shadow: hotpink 0 -1px 0, purple 0 2px 1px;
+}
+
+
+.button:active {
+  text-shadow: hsla(210,100%,20%,.3) 0 -1px 0, hotpink 0 2px 1px, rgba(242, 103, 226, 0.516) 0 0 5px, rgba(165, 149, 172, 0.543) 0 0 20px;
+}
+

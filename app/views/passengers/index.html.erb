@@ -8,13 +8,15 @@
       <% end %>
       <li>
         <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{passenger.id}.png", alt: "Passenger Avatar"%>
-        <%= link_to "#{passenger.name}", passenger_path(passenger)%>
       </li>
       <li>
-        <%= button_to "Delete", passenger_path(passenger), method: :delete%>
+        <%= button_to "#{passenger.name}", passenger_path(passenger), method: :get, class: "button"%>
       </li>
       <li>
-      <%=  button_to "Edit", edit_passenger_path(passenger), method: :get%>
+        <%= button_to "Delete", passenger_path(passenger), method: :delete, class: "button"%>
+      </li>
+      <li>
+      <%=  button_to "Edit", edit_passenger_path(passenger), method: :get , class: "button"%>
       </li>
     <% end %>
   </ul>

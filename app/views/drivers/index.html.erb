@@ -8,13 +8,15 @@
       <% end %>
       <li>
         <%= image_tag "https://api.adorable.io/avatars/200/.driver#{driver.id}.png", alt: "#{driver.name}'s Avatar"%>
-        <%= link_to "#{driver.name}", driver_path(driver.id) %>
       </li>
       <li>
-        <%= button_to "Delete", driver_path(driver.id), method: :delete %>
+        <%= button_to "#{driver.name}", driver_path(driver.id), method: :get, class: "button" %>
       </li>
       <li>
-        <%=  button_to "Edit", edit_driver_path(driver.id), method: :get %>
+        <%= button_to "Delete", driver_path(driver.id), method: :delete, class: "button" %>
+      </li>
+      <li>
+        <%=  button_to "Edit", edit_driver_path(driver.id), method: :get, class: "button" %>
       </li>
     <% end %>
   </ul>
