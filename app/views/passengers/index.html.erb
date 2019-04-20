@@ -1,16 +1,16 @@
 <h1>Rideshare Passengers</h1>
 
-<section>
-  <ul>
-    <% @passengers.each do |passenger| %>
-      <% if passenger.id == 0%>
-        <% next %>
-      <% end %>
+<section class="list">
+  <% @passengers.each do |passenger| %>
+    <% if passenger.id == 0%>
+      <% next %>
+    <% end %>
+    <ul class="list passenger">
       <li>
-        <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{passenger.id}.png", alt: "Passenger Avatar"%>
+        <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{passenger.id}.png", alt: "Passenger Avatar", class: "avatar"%>
       </li>
       <li>
-        <%= button_to "#{passenger.name}", passenger_path(passenger), method: :get, class: "button"%>
+          <%= button_to "#{passenger.name}", passenger_path(passenger), method: :get, class: "button "%>
       </li>
       <li>
         <%= button_to "Delete", passenger_path(passenger), method: :delete, class: "button"%>
@@ -18,6 +18,10 @@
       <li>
       <%=  button_to "Edit", edit_passenger_path(passenger), method: :get , class: "button"%>
       </li>
-    <% end %>
-  </ul>
+      <li class="shoes">
+      <%= image_tag "https://i.ibb.co/ySw8dLM/shoe.png", alt: "shoe", class: "left shoe"%>
+      <%= image_tag "https://i.ibb.co/ySw8dLM/shoe.png", alt: "shoe", class: "right "%>
+      </li>
+    </ul>
+  <% end %>
 </section>
