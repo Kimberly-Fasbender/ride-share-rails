@@ -15,8 +15,12 @@
  */
 
  body {
+  font-family: 'Righteous', cursive;
    padding: 0;
    margin: 0;
+   background-image: url("https://i.ibb.co/zHyyGcC/checkreba.png");
+   background-color: black;
+
  }
 
  .main_nav {
@@ -133,10 +137,11 @@ section.list {
 }
 
 ul.list{
-  list-style-type: none;
-  border: 3px black solid;
-  padding: 2em;
   background: radial-gradient(rgb(68, 11, 121),rgb(30, 2, 75), black);
+  border: 3px black solid;
+  border-radius: 10%;
+  list-style-type: none;
+  padding: 2em;
 
 }
 
