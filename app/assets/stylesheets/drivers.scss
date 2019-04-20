@@ -1,3 +1,27 @@
 // Place all the styles related to the Drivers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+// status on driver card
+
+
+.status{
+   color: rgb(212, 151, 209);
+  font-size: 1.50em;
+}
+
+.available.status::after {
+  content: "✅";
+  font-size: 2em;
+}
+
+.unavailable.status::after {
+  content: "🛑";
+  font-size: 2em;
+}
+
+.name {
+  margin-top: 1em;
+}

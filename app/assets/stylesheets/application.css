@@ -104,12 +104,11 @@
   inset hsla(0,0%,15%, .8) 0 -1px 5px 2px, /* soft SD */
   inset hsla(0,0%,0%, .25) 0 -1px 0px 4px, /* bottom SD */
   inset hsla(0,0%,100%,.7) 0  2px 1px 4px, /* top HL */
-  
-  hsla(0,0%, 0%,.15) 0 -5px 6px 2px, /* outer SD */
-  hsla(0,0%,100%,.5) 0  5px 6px 2px; /* outer HL */ 
+  hsla(0,0%,100%,.5) 0  5px 6px 2px; /* outer HL */
   transition: color .2s;
     
 }
+
 
 .button:hover {
 background-color: black;
@@ -130,11 +129,41 @@ text-shadow: hotpink 0 -1px 0, purple 0 2px 1px;
 section.list {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 ul.list{
   list-style-type: none;
+  border: 3px black solid;
+  padding: 2em;
+  background: radial-gradient(rgb(68, 11, 121),rgb(30, 2, 75), black);
+
+}
+
+.list li{
+  text-align: center;
+
+}
+
+ul.list li:last-of-type::after{
+ font-size: 1em;
+  /* content: url("https://i.ibb.co/WsyLRBX/car.png"); */
+
+ 
+ 
+
+}
+/* all avatar */
+
+.avatar {
+  border-radius: 60%;
+  border: solid;
+  box-shadow: inset hsla(0,0%,15%,  1) 0  0px 0px 2px, /* border */
+  inset hsla(0,0%,15%, .8) 0 -1px 5px 2px, /* soft SD */
+  inset hsla(0,0%,0%, .25) 0 -1px 0px 4px, /* bottom SD */
+  inset hsla(0,0%,100%,.7) 0  2px 1px 4px, /* top HL */
+  hsla(0,0%,100%,.5) 0  5px 6px 2px; /* outer HL */
+  transition: color .2s;
 }
 
 
-/* all avatar */
