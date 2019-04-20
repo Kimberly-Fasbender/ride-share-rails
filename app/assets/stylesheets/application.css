@@ -171,4 +171,28 @@ ul.list li:last-of-type::after{
   transition: color .2s;
 }
 
+/* show pages */
+.show {
+  /* font-size: 2em; */
+  background-image: none;
+  background-color: white;
 
+}
+
+.show ul{
+  list-style-type: none;  
+}
+
+/* footer */
+
+footer {
+  background-image:
+  linear-gradient(
+    to right,
+    rgb(159, 156, 156), black
+  );
+  color: white;
+  height: 20px;
+  text-align: right;
+
+}

@@ -1,10 +1,10 @@
 <h1>Driver View</h1>
 
-<article>
+<article class="show">
   <h2>Name: <%= @driver.name %></h2>
   <ul>
     <li>
-      <%= image_tag "https://api.adorable.io/avatars/200/.driver#{@driver.id}.png", alt: "Passenger #{@driver.id} Avatar"%>
+              <%= image_tag "https://api.adorable.io/avatars/193x100/.driver#{@driver.id}.png", alt: "#{@driver.name}'s Avatar", class: "avatar"%>
     </li> 
     <li>
       Car: <%= "#{@driver.car_make} #{@driver.car_model}" %>

@@ -4,7 +4,10 @@
     <title>RideShareRails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+    <%= favicon_link_tag image_url("https://i.ibb.co/yQxGntZ/favicon.png") %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -29,8 +32,11 @@
       </div>
     </div>  
   </nav>
-
-  <body>
+  <% @passenger || @driver ? show = "show" : show = ""%>
+  <body class="<%=show%>">  <%# show so that background does not obscure unstyled show pages%>
     <%= yield %>
   </body>
+  <footer>
+  &copy; 2019, Kim and Sav
+  </footer>
 </html>

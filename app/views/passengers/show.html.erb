@@ -1,6 +1,6 @@
 <h1>Passenger View</h1>
 
-<article>
+<article class="show">
   <section>
     <h2>Name: <%= @passenger.name %></h2>
     <%if flash[:error]%>
@@ -12,7 +12,7 @@
   </section>
   <ul>
     <li>
-      <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{@passenger.id}.png", alt: "Passenger #{@passenger.id} Avatar"%>
+         <%= image_tag "https://api.adorable.io/avatars/200/.passenger#{@passenger.id}.png", alt: "Passenger Avatar", class: "avatar"%>
     </li>
     <li>
       <p>Phone Number: <%= @passenger.phone_num%></p>
