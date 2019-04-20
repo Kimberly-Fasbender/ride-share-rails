@@ -1,13 +1,13 @@
 <h1>Rideshare Drivers</h1>
 
 <section class="list">
-  <ul class="list">
-    <% @drivers.each do |driver| %>
-      <% if driver.id == 0%>
-        <% next %>
-      <% end %>
+  <% @drivers.each do |driver| %>
+    <% if driver.id == 0%>
+      <% next %>
+    <% end %>
+    <ul class="list">
       <li>
-        <%= image_tag "https://api.adorable.io/avatars/200/.driver#{driver.id}.png", alt: "#{driver.name}'s Avatar"%>
+        <%= image_tag "https://api.adorable.io/avatars/200/.driver#{driver.id}.png", alt: "#{driver.name}'s Avatar" class: "avatar"%>
       </li>
       <li>
         <%= button_to "#{driver.name}", driver_path(driver.id), method: :get, class: "button" %>
@@ -18,8 +18,8 @@
       <li>
         <%=  button_to "Edit", edit_driver_path(driver.id), method: :get, class: "button" %>
       </li>
-    <% end %>
-  </ul>
+    </ul>
+  <% end %>
 </section>
 
 
