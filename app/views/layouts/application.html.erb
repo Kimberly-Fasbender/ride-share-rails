@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RideShareRails</title>
+    <title>K&S Rides</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
@@ -12,32 +12,32 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <nav class="main_nav">
-    <%= link_to image_tag("https://i.ibb.co/yQpRhS3/k-S.png", 
-                          size: "175x75", 
-                          alt: "K&S RideShare Logo"), root_path %>
-    <div class="dropdown">
-      <button class="dropbtn">Drivers</button>
-      <div class="dropdown-content">
-        <%= link_to "List Drivers", drivers_path %>
-        <%= link_to "Add Driver", new_driver_path %>
-      </div>
-    </div> 
+    <nav class="main_nav">
+      <%= link_to image_tag("https://i.ibb.co/yQpRhS3/k-S.png", 
+                            size: "175x75", 
+                            alt: "K&S RideShare Logo"), root_path %>
+      <div class="dropdown">
+        <button class="dropbtn">Drivers</button>
+        <div class="dropdown-content">
+          <%= link_to "List Drivers", drivers_path %>
+          <%= link_to "Add Driver", new_driver_path %>
+        </div>
+      </div> 
 
-    <div class="dropdown">
-      <button class="dropbtn">Passengers</button>
-      <div class="dropdown-content">
-        <%= link_to "List Passengers", passengers_path %>
-        <%= link_to "Add Passenger", new_passenger_path %>
-      </div>
-    </div>  
-  </nav>
-  <% @passenger || @driver ? show = "show" : show = ""%>
-  <main class="<%=show%>">  <%# show so that background does not obscure unstyled show pages%>
-    <%= yield %>
-  </main>
-  <footer>
-  &copy; 2019, Kim and Sav
-  </footer>
+      <div class="dropdown">
+        <button class="dropbtn">Passengers</button>
+        <div class="dropdown-content">
+          <%= link_to "List Passengers", passengers_path %>
+          <%= link_to "Add Passenger", new_passenger_path %>
+        </div>
+      </div>  
+    </nav>
+    <% @passenger || @driver ? show = "show" : show = ""%>
+    <main class="<%=show%>">  <%# show so that background does not obscure unstyled show pages%>
+      <%= yield %>
+    </main>
+    <footer>
+    &copy; 2019, Kim and Sav
+    </footer>
   </body>
 </html>
