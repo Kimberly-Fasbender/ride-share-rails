@@ -1,6 +1,6 @@
 class DriversController < ApplicationController
   def index
-    @drivers = Driver.all.order(:name)
+    @drivers = Driver.order(:updated_at).reverse_order
   end
 
   def show

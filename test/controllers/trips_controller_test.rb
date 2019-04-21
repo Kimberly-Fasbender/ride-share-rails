@@ -165,4 +165,33 @@ describe TripsController do
       must_respond_with :not_found
     end
   end
+
+  describe "complete" do
+    before do
+      Trip.last.update(rating: nil)
+      @trip = Trip.last
+      @driver = Driver.find(@trip.driver_id)
+      @driver.update(available: false)
+    end
+    it "will update trip rating" do
+      expect(@trip.rating).must_be_nil
+      expect {
+        patch complete_trip_path(@trip.id), params: { trip: { rating: 4 } }
+      }.wont_change "Trip.count"
+
+      @trip.reload
+
+      expect(@trip.rating).must_equal 4
+    end
+
+    it "will update status of driver to available from unavailable" do
+      expect(@driver.available).must_equal false
+      expect {
+        patch complete_trip_path(@trip.id), params: { trip: { rating: 4 } }
+      }.wont_change "Trip.count"
+
+      @driver.reload
+      expect(@driver.available).must_equal true
+    end
+  end
 end
