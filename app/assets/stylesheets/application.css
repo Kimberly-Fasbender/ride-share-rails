@@ -29,6 +29,8 @@ main{
   grid-row: 2;
 }
 
+/* nav bar style */
+
  .main_nav {
   background-image:
     linear-gradient(
@@ -87,9 +89,8 @@ main{
   background-color: black;
 }
 
+/* trip table style */
 .trip_table {
-  /* display: flex;
-  justify-content: center; */
   margin: 2% auto 5% 10%;
 }
 
@@ -102,7 +103,7 @@ table {
 td, th {
   vertical-align: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid black;
 }
 
 tr:nth-child(even) {
@@ -111,10 +112,6 @@ tr:nth-child(even) {
 
 th {
   background: rgb(255, 0, 49);
-}
-
-tr:hover {
-  background-color: pink;
 }
 
 /* Button style */
