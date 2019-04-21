@@ -1,4 +1,4 @@
-<h1>Rideshare Drivers</h1>
+<h1 class="index">Rideshare Drivers</h1>
 
 <section class="list">
   <% @drivers.each do |driver| %>
@@ -21,6 +21,7 @@
         <%end%>
       <li>
         <p class= "<%=status%> status"><%="STATUS"%><br></p>
+        <p class= "status">(<%=status.capitalize%>)</p>
       </li>
      <!-- <li>
         <%= button_to "Delete", driver_path(driver.id), method: :delete, class: "button" %>

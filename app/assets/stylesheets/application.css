@@ -138,10 +138,23 @@ text-shadow: hotpink 0 -1px 0, purple 0 2px 1px;
 
 /* layout for  index views -> reused for passenger and driver*/
 
+.index {
+  color:white;
+  text-align: center;
+  font-size: 2em;
+  background-color: black;
+  padding: 10px;
+  margin-top: -5px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
 section.list {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  margin-top: 70px;
 }
 
 ul.list{
@@ -158,14 +171,6 @@ ul.list{
 
 }
 
-ul.list li:last-of-type::after{
- font-size: 1em;
-  /* content: url("https://i.ibb.co/WsyLRBX/car.png"); */
-
- 
- 
-
-}
 /* all avatar */
 
 .avatar {
