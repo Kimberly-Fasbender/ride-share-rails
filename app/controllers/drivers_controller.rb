@@ -65,9 +65,8 @@ class DriversController < ApplicationController
     else
       driver.toggle(:available)
       driver.save
+      redirect_to driver_path(driver.id)
     end
-
-    redirect_to driver_path(driver.id)
   end
 
   private

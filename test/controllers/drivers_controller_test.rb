@@ -37,10 +37,6 @@ describe DriversController do
 
   describe "edit" do
     it "can get the edit page for an existing driver" do
-      puts "######################################"
-      puts @driver.id
-      puts @driver
-
       get edit_driver_path(@driver.id)
 
       must_respond_with :success
@@ -146,7 +142,7 @@ describe DriversController do
   end
 
   describe "availability" do
-    it "can change the driver's availability from true to false" do
+    it "can change the driver's availability from true to false and back again" do
       expect(@driver.available).must_equal true
 
       expect {
@@ -155,10 +151,24 @@ describe DriversController do
 
       @driver.reload
 
+      must_respond_with :redirect
+      must_redirect_to driver_path(@driver.id)
       expect(@driver.available).must_equal false
+
+      patch availability_path(@driver.id)
+
+      @driver.reload
+      expect(@driver.available).must_equal true
     end
 
-    it "can change the driver's availability from fals to true" do
+    it "will render a 404 for an invalid driver id" do
+      invalid_id = -50
+
+      expect {
+        patch availability_path(invalid_id)
+      }.wont_change "Driver.count"
+
+      must_respond_with :not_found
     end
   end
 end
