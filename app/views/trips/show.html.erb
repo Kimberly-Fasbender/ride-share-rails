@@ -1,6 +1,7 @@
-<h1>Trip #<%= @trip.id %></h1>
+<article class="trip show">
+  <h1>Trip #<%= @trip.id %></h1>
 
-<section>
-  <%= render partial: 'trip_table', locals: { :trips => [@trip] } %>
-</section>
-
+  <section>
+    <%= render partial: 'trip_table', locals: { :trips => [@trip] } %>
+  </section>
+</article>

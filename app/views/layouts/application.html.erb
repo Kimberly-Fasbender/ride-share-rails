@@ -11,7 +11,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <body>
   <nav class="main_nav">
     <%= link_to image_tag("https://i.ibb.co/yQpRhS3/k-S.png", 
                           size: "175x75", 
@@ -33,10 +33,11 @@
     </div>  
   </nav>
   <% @passenger || @driver ? show = "show" : show = ""%>
-  <body class="<%=show%>">  <%# show so that background does not obscure unstyled show pages%>
+  <main class="<%=show%>">  <%# show so that background does not obscure unstyled show pages%>
     <%= yield %>
-  </body>
+  </main>
   <footer>
   &copy; 2019, Kim and Sav
   </footer>
+  </body>
 </html>

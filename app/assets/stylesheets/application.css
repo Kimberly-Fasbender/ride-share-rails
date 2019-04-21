@@ -16,12 +16,17 @@
 
  body {
   font-family: 'Righteous', cursive;
-   padding: 0;
-   margin: 0;
-   background-image: url("https://i.ibb.co/zHyyGcC/checkreba.png");
-   background-color: black;
+  display: grid;
+  grid-template-rows: 75px 1fr 20px;
+  padding: 0;
+  margin: 0;
+  background-image: url("https://i.ibb.co/zHyyGcC/checkreba.png");
+  background-color: black;
+}
 
- }
+main{
+  grid-row: 2;
+}
 
  .main_nav {
   background-image:
@@ -34,6 +39,9 @@
   align-items: center;
   height: 75px;
   box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  z-index: 99999;
  }
 
  .dropbtn {
@@ -173,14 +181,20 @@ ul.list li:last-of-type::after{
 
 /* show pages */
 .show {
-  /* font-size: 2em; */
   background-image: none;
   background-color: white;
-
 }
 
 .show ul{
   list-style-type: none;  
+}
+
+/* form pages */
+
+.form{
+  font-size: 1em;
+  background-color: white;
+  padding-bottom: 10px;
 }
 
 /* footer */
@@ -194,5 +208,6 @@ footer {
   color: white;
   height: 20px;
   text-align: right;
-
+  grid-row: -1;
+  margin-top: -20px;
 }
