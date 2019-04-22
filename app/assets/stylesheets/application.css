@@ -107,6 +107,10 @@ table {
   width: 75%;
 }
 
+.no_trips_row {
+  text-align: center;
+}
+
 td, th {
   vertical-align: center;
   padding: 10px;

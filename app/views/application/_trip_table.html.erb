@@ -14,9 +14,17 @@
     </thead>
     <tbody>   
 
+      <% if trips.empty? %>
+      <tr>
+        <td class="no_trips_row", colspan="7">
+        No Trips
+        </td>
+      </tr>
+      <% end %>
+
       <% trips.each do |trip| %>
         <tr>
-          <td>
+          <td>    
             <%= link_to "#{trip.id}", trip_path(trip.id) %> 
           </td>
           <td>
